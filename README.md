@@ -2,3 +2,5 @@
 
 By Igor Scheglov
 scheglov.igor@gmail.com
+
+foo bar
