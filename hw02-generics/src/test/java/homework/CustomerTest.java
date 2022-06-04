@@ -29,7 +29,7 @@ class CustomerTest {
     }
 
     @Test
-    @Disabled //надо удалить
+    //@Disabled //надо удалить
     @DisplayName("Объект Customer как ключ в карте")
     void customerAsKeyTest() {
         //given
@@ -57,7 +57,7 @@ class CustomerTest {
     }
 
     @Test
-    @Disabled //надо удалить
+   // @Disabled //надо удалить
     @DisplayName("Сортировка по полю score, итерация по возрастанию")
     void scoreSortingTest() {
         //given
@@ -81,9 +81,13 @@ class CustomerTest {
         Map.Entry<Customer, String> middleScore = customerService.getNext(new Customer(10, "Key", 20));
         //then
         assertThat(middleScore.getKey()).isEqualTo(customer1);
+
         middleScore.getKey().setScores(10000);
         middleScore.getKey().setName("Vasy");
 
+        // TODO я считаю, тест должен возвращать null. Мы только что изменили score в middleScore - ссылка на тот же объект,
+        // что customer1, значит ищем объект с score > 10000 - таких нет.
+        // но тут и дальше логика такая же остаётся..
         //when
         Map.Entry<Customer, String> biggestScore = customerService.getNext(customer1);
         //then
@@ -97,7 +101,7 @@ class CustomerTest {
     }
 
     @Test
-    @Disabled //надо удалить
+//    @Disabled //надо удалить
     @DisplayName("Модификация коллекции")
     void mutationTest() {
         //given
@@ -119,7 +123,7 @@ class CustomerTest {
     }
 
     @Test
-    @Disabled //надо удалить
+    //@Disabled //надо удалить
     @DisplayName("Возвращание в обратном порядке")
     void reverseOrderTest() {
         //given
