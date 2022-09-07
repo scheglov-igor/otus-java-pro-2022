@@ -33,6 +33,13 @@ public class DynamicProxy {
 
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+
+            Method implMethod = myClass.getClass().getDeclaredMethod(method.getName(), method.getParameterTypes());
+            if (implMethod.isAnnotationPresent(Log.class)) {
+                System.out.println("executed method: " + method.getName() + ", param: " + Arrays.toString(args));
+            }
+            
+            /*
             if (Proxy.isProxyClass(proxy.getClass())) {
                 InvocationHandler handler = Proxy.getInvocationHandler(proxy);
                 if (handler instanceof DemoInvocationHandler) {
@@ -45,6 +52,7 @@ public class DynamicProxy {
                     }
                 }
             }
+            */
 
             return method.invoke(myClass, args);
 
