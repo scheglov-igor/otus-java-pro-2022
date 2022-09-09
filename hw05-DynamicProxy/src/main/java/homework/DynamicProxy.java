@@ -2,11 +2,10 @@ package homework;
 
 import homework.annotations.Log;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.util.Arrays;
+import java.util.*;
 
 public class DynamicProxy {
 
@@ -23,8 +22,16 @@ public class DynamicProxy {
 
         private final TestClassImpl myClass;
 
+        private final Set<MyMethodSignature> methodsToLogSet;
+
         DemoInvocationHandler(TestClassImpl myClass) {
             this.myClass = myClass;
+            methodsToLogSet = new HashSet<>();
+            for (Method m: myClass.getClass().getDeclaredMethods()) {
+                if(m.isAnnotationPresent(Log.class)) {
+                    methodsToLogSet.add(new MyMethodSignature(m.getName(), m.getParameterTypes()));
+                }
+            }
         }
 
         public TestClassImpl getMyClass() {
@@ -34,25 +41,11 @@ public class DynamicProxy {
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
-            Method implMethod = myClass.getClass().getDeclaredMethod(method.getName(), method.getParameterTypes());
-            if (implMethod.isAnnotationPresent(Log.class)) {
+            MyMethodSignature invokedMethod = new MyMethodSignature(method.getName(), method.getParameterTypes());
+
+            if(methodsToLogSet.contains(invokedMethod)) {
                 System.out.println("executed method: " + method.getName() + ", param: " + Arrays.toString(args));
             }
-            
-            /*
-            if (Proxy.isProxyClass(proxy.getClass())) {
-                InvocationHandler handler = Proxy.getInvocationHandler(proxy);
-                if (handler instanceof DemoInvocationHandler) {
-                    DemoInvocationHandler demoInvocationHandler = (DemoInvocationHandler) handler;
-                    TestClassImpl tci = demoInvocationHandler.getMyClass();
-                    Method implMethod = tci.getClass().getDeclaredMethod(method.getName(), method.getParameterTypes());
-
-                    if (implMethod.isAnnotationPresent(Log.class)) {
-                        System.out.println("executed method: " + method.getName() + ", param: " + Arrays.toString(args));
-                    }
-                }
-            }
-            */
 
             return method.invoke(myClass, args);
 
