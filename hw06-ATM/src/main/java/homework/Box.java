@@ -3,7 +3,7 @@ package homework;
 public class Box {
 
     private final Money money;
-    private Integer value = 0;
+    private int value = 0;
 
     public Box(Money money) {
         this.money = money;
@@ -15,7 +15,7 @@ public class Box {
         }
     }
 
-    public MoneyBundle pop(Integer popAmount, Boolean onlyCheck) {
+    public MoneyBundle pop(int popAmount, boolean onlyCheck) {
         int popVal = popAmount / money.getNominal();
         if(popVal > value) {
             popVal = value;
@@ -29,11 +29,11 @@ public class Box {
         return null;
     }
 
-    public Integer getAmount() {
+    public int getAmount() {
         return value * money.getNominal();
     }
 
-    public Integer getNominal() {
+    public int getNominal() {
         return money.getNominal();
     }
 

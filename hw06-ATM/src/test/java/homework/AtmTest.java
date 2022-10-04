@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -15,13 +17,13 @@ class AtmTest {
 
     @BeforeEach
     void createATM() {
-        atm = new Atm();
+        atm = new Atm(Money.createAllMoneyBoxes());
     }
 
     @Test
     void testFree() {
         //when
-        Integer amountByStart = atm.getATMAmount();
+        int amountByStart = atm.getATMAmount();
         //then
         assertThat(amountByStart).isEqualTo(0);
     }
@@ -100,4 +102,21 @@ class AtmTest {
 
     }
 
+    @Test
+    void pushWrongMoney() {
+
+        Map<Money, Box> boxMap1000 = new TreeMap<>(((o1, o2) -> (Integer.compare(o2.getNominal(), o1.getNominal()))));
+        boxMap1000.put(Money.MONEY_1000, new Box(Money.MONEY_1000));
+
+        Atm atm1000 = new Atm(boxMap1000);
+
+        List<MoneyBundle> pushBundleList = new ArrayList<>();
+        pushBundleList.add(new MoneyBundle(1, Money.MONEY_1000));
+        pushBundleList.add(new MoneyBundle(1, Money.MONEY_100));
+        List<MoneyBundle> returnBundleList = atm1000.push(pushBundleList);
+
+        assertThat(atm1000.getATMAmount()).isEqualTo(1000);
+        assertThat(returnBundleList.get(0)).isEqualTo(new MoneyBundle(1, Money.MONEY_100));
+
+    }
 }

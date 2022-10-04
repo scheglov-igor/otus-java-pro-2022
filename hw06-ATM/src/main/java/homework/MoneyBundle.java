@@ -1,15 +1,15 @@
 package homework;
 
 public class MoneyBundle {
-    private final Integer value;
+    private final int value;
     private final Money money;
 
-    public MoneyBundle(Integer value, Money money) {
+    public MoneyBundle(int value, Money money) {
         this.value = value;
         this.money = money;
     }
 
-    public Integer getValue() {
+    public int getValue() {
         return value;
     }
 
@@ -17,7 +17,7 @@ public class MoneyBundle {
         return money;
     }
 
-    public Integer getAmonunt() { return value * money.getNominal(); }
+    public int getAmonunt() { return value * money.getNominal(); }
 
     @Override
     public String toString() {
@@ -25,5 +25,16 @@ public class MoneyBundle {
                 "value=" + value +
                 ", money=" + money +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MoneyBundle that = (MoneyBundle) o;
+
+        if (value != that.value) return false;
+        return money == that.money;
     }
 }

@@ -6,31 +6,34 @@ public class Atm {
     private final Map<Money, Box> boxMap;
 
 
-    public Atm() {
-
-        boxMap = new TreeMap<>(((o1, o2) -> (o2.getNominal() - o1.getNominal())));
-        for (Money money: Money.values()) {
-            boxMap.put(money, new Box(money));
-        }
+    public Atm(Map<Money, Box> boxMap) {
+        this.boxMap = boxMap;
     }
 
 
-    public Integer getATMAmount() {
-        Integer amount = 0;
+    public int getATMAmount() {
+        int amount = 0;
         for(Box box: boxMap.values()) {
             amount += box.getAmount();
         }
         return amount;
     }
 
-    public void push(List<MoneyBundle> moneyBundleList) {
+    public List<MoneyBundle> push(List<MoneyBundle> moneyBundleList) {
+        List<MoneyBundle> moneyBundleToReturnList = new ArrayList<>();
         for(MoneyBundle moneyBundle: moneyBundleList) {
-            boxMap.get(moneyBundle.getMoney()).push(moneyBundle);
+            if (boxMap.get(moneyBundle.getMoney()) != null) {
+                boxMap.get(moneyBundle.getMoney()).push(moneyBundle);
+            }
+            else {
+                moneyBundleToReturnList.add(moneyBundle);
+            }
         }
+        return moneyBundleToReturnList;
     }
 
-    public List<MoneyBundle> pop (Integer amount) throws Exception {
-        Integer amountToCheck = amount;
+    public List<MoneyBundle> pop (int amount) throws Exception {
+        int amountToCheck = amount;
         for(Box box: boxMap.values()) {
             if(amountToCheck > 0) {
                 MoneyBundle moneyBundleFromBox = box.pop(amount, true);
