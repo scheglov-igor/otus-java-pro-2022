@@ -21,11 +21,5 @@ public enum Money {
         return nominal;
     }
 
-    public static Map<Money, Box> createAllMoneyBoxes() {
-        Map<Money, Box> boxMap = new TreeMap<>(((o1, o2) -> (Integer.compare(o2.getNominal(), o1.getNominal()))));
-        for (Money money: Money.values()) {
-            boxMap.put(money, new Box(money));
-        }
-        return boxMap;
-    }
+
 }

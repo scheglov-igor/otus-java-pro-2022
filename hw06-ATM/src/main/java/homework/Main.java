@@ -8,7 +8,7 @@ import java.util.TreeMap;
 public class Main {
 
     public static void main(String[] args) {
-        Atm atm = new Atm(Money.createAllMoneyBoxes());
+        AtmInterface atm = new Atm(AtmBoxes.createAllMoneyBoxes());
 
         List<MoneyBundle> pushBundleList = new ArrayList<>();
         pushBundleList.add(new MoneyBundle(1, Money.MONEY_1000));

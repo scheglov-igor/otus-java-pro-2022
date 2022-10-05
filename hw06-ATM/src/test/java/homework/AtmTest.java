@@ -13,18 +13,16 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class AtmTest {
 
-    Atm atm;
+    AtmInterface atm;
 
     @BeforeEach
     void createATM() {
-        atm = new Atm(Money.createAllMoneyBoxes());
+        atm = new Atm(AtmBoxes.createAllMoneyBoxes());
     }
 
     @Test
     void testFree() {
-        //when
         int amountByStart = atm.getATMAmount();
-        //then
         assertThat(amountByStart).isEqualTo(0);
     }
 
@@ -36,26 +34,22 @@ class AtmTest {
         pushBundleList.add(new MoneyBundle(1, Money.MONEY_1000));
         pushBundleList.add(new MoneyBundle(1, Money.MONEY_100));
 
-        atm.push(pushBundleList);
+        List<MoneyBundle> returnMoneyList = atm.push(pushBundleList);
         assertThat(atm.getATMAmount()).isEqualTo(1100);
+        assertThat(returnMoneyList.size()).isEqualTo(0);
 
         List<MoneyBundle> pushBundleList2 = new ArrayList<>();
         pushBundleList2.add(new MoneyBundle(1, Money.MONEY_2000));
         pushBundleList2.add(new MoneyBundle(2, Money.MONEY_500));
 
-        atm.push(pushBundleList2);
+        returnMoneyList = atm.push(pushBundleList2);
         assertThat(atm.getATMAmount()).isEqualTo(4100);
+        assertThat(returnMoneyList.size()).isEqualTo(0);
 
     }
 
     @Test
     void popTest() throws Exception {
-
-        //TODO
-        // подскажите, а в тестах нормально переиспользовать другие тесты?
-        // pushTest();
-        // с одной стороны, удобно
-        // с другой - поменял что-то в pushTest() и всё сломалось в другом месте
 
         List<MoneyBundle> pushBundleList = new ArrayList<>();
         pushBundleList.add(new MoneyBundle(1, Money.MONEY_1000));
@@ -70,11 +64,6 @@ class AtmTest {
 
     @Test
     void pop2Test() throws Exception {
-
-        // а в тестах нормально переиспользовать другие тесты?
-        // pushTest();
-        // с одной стороны, удобно
-        // с другой - поменял что-то в pushTest() и всё сломалось в другом месте
 
         List<MoneyBundle> pushBundleList = new ArrayList<>();
         pushBundleList.add(new MoneyBundle(4, Money.MONEY_1000));
@@ -108,7 +97,7 @@ class AtmTest {
         Map<Money, Box> boxMap1000 = new TreeMap<>(((o1, o2) -> (Integer.compare(o2.getNominal(), o1.getNominal()))));
         boxMap1000.put(Money.MONEY_1000, new Box(Money.MONEY_1000));
 
-        Atm atm1000 = new Atm(boxMap1000);
+        AtmInterface atm1000 = new Atm(boxMap1000);
 
         List<MoneyBundle> pushBundleList = new ArrayList<>();
         pushBundleList.add(new MoneyBundle(1, Money.MONEY_1000));
