@@ -1,5 +1,8 @@
 package homework;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 public enum Money {
     MONEY_100(100),
     MONEY_200(200),
@@ -8,13 +11,15 @@ public enum Money {
     MONEY_2000(2000),
     MONEY_5000(5000);
 
-    private final Integer nominal;
+    private final int nominal;
 
-    Money(Integer nominal) {
+    Money(int nominal) {
         this.nominal = nominal;
     }
 
-    public Integer getNominal() {
+    public int getNominal() {
         return nominal;
     }
+
+
 }
