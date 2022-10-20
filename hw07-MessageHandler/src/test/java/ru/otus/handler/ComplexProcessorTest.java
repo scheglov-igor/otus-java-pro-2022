@@ -6,12 +6,13 @@ import org.junit.jupiter.api.Test;
 import ru.otus.model.Message;
 import ru.otus.listener.Listener;
 import ru.otus.processor.Processor;
+import ru.otus.processor.homework.ProcessorEvenSecondThrower;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
@@ -73,6 +74,7 @@ class ComplexProcessorTest {
         verify(processor2, never()).process(message);
     }
 
+
     @Test
     @DisplayName("Тестируем уведомления")
     void notifyTest() {
@@ -94,6 +96,46 @@ class ComplexProcessorTest {
         //then
         verify(listener, times(1)).onUpdated(message);
     }
+
+
+    // я не смог придумать, куда здесь можно добавить mock и verify.
+    @Test
+    @DisplayName("Тестируем создание исключения - четная секунда")
+    void handleEvenSecondExceptionTest() {
+        //given
+        var message = new Message.Builder(1L).field8("field8").build();
+
+        Processor processor = new ProcessorEvenSecondThrower(() -> LocalDateTime.now().withSecond(4));
+
+        var processors = List.of(processor);
+
+        var complexProcessor = new ComplexProcessor(processors, (ex) -> {
+            throw new TestException(ex.getMessage());
+        });
+
+        //when
+        assertThatExceptionOfType(TestException.class).isThrownBy(() -> complexProcessor.handle(message));
+
+    }
+
+    @Test
+    @DisplayName("Тестируем отсутствие исключения - нечетная секунда")
+    void handleOddSecondNoExceptionTest() {
+        //given
+        var message = new Message.Builder(1L).field8("field8").build();
+
+        Processor processor = new ProcessorEvenSecondThrower(() -> LocalDateTime.now().withSecond(3));
+
+        var processors = List.of(processor);
+
+        var complexProcessor = new ComplexProcessor(processors, (ex) -> {
+            throw new TestException(ex.getMessage());
+        });
+
+        assertThatNoException().isThrownBy(() -> complexProcessor.handle(message));
+
+    }
+
 
     private static class TestException extends RuntimeException {
         public TestException(String message) {

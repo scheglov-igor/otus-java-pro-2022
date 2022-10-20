@@ -2,17 +2,22 @@ package ru.otus.listener.homework;
 
 import ru.otus.listener.Listener;
 import ru.otus.model.Message;
-import java.util.Optional;
 
+import java.util.*;
+
+// 1. я правильно понимаю, что тут нужно было менять сам класс, а не наследоваться от него?
 public class HistoryListener implements Listener, HistoryReader {
+
+    Map<Long, Deque<Message>> messageDequeMap = new HashMap<>();
 
     @Override
     public void onUpdated(Message msg) {
-        throw new UnsupportedOperationException();
+        Deque<Message> messageDeque = messageDequeMap.computeIfAbsent(msg.getId(), l -> new ArrayDeque<>());
+        messageDeque.push(msg.toBuilder().build());
     }
 
     @Override
     public Optional<Message> findMessageById(long id) {
-        throw new UnsupportedOperationException();
+        return Optional.ofNullable(messageDequeMap.get(id).poll());
     }
 }
