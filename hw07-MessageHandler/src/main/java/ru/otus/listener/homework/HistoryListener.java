@@ -8,12 +8,12 @@ import java.util.*;
 // 1. я правильно понимаю, что тут нужно было менять сам класс, а не наследоваться от него?
 public class HistoryListener implements Listener, HistoryReader {
 
-    Map<Long, Deque<Message>> messageDequeMap = new HashMap<>();
+    private final Map<Long, Deque<Message>> messageDequeMap = new HashMap<>();
 
     @Override
     public void onUpdated(Message msg) {
         Deque<Message> messageDeque = messageDequeMap.computeIfAbsent(msg.getId(), l -> new ArrayDeque<>());
-        messageDeque.push(msg.toBuilder().build());
+        messageDeque.push(msg.copy());
     }
 
     @Override
