@@ -19,7 +19,6 @@ class ProcessorTest {
     //сам тест менять нельзя
 
     @Test
-    @Disabled // Эту аннотацию надо убрать
     @DisplayName("Из файла читается json, обрабатывается, результат сериализуется в строку")
         void processingTest(@TempDir Path tempDir) throws IOException {
         System.out.println(tempDir);

@@ -11,6 +11,15 @@ public final class Measurement {
         this.value = value;
     }
 
+    //через jackson у меня получилось работать только с такой аннотацией
+/*
+    @JsonCreator
+    public Measurement(@JsonProperty("name") String name, @JsonProperty("value") double value) {
+        this.name = name;
+        this.value = value;
+    }
+*/
+
     public String getName() {
         return name;
     }
