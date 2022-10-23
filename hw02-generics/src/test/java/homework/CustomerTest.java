@@ -85,7 +85,7 @@ class CustomerTest {
         middleScore.getKey().setScores(10000);
         middleScore.getKey().setName("Vasy");
 
-        // TODO я считаю, тест должен возвращать null. Мы только что изменили score в middleScore - ссылка на тот же объект,
+        // я считаю, тест должен возвращать null. Мы только что изменили score в middleScore - ссылка на тот же объект,
         // что customer1, значит ищем объект с score > 10000 - таких нет.
         // но тут и дальше логика такая же остаётся..
         //when
