@@ -1,6 +1,9 @@
 package ru.otus.crm.model;
 
+import ru.otus.jdbc.mapper.Id;
+
 public class Manager {
+    @Id
     private Long no;
     private String label;
     private String param1;
@@ -46,7 +49,8 @@ public class Manager {
     public String toString() {
         return "Manager{" +
                 "no=" + no +
-                ", label='" + label + '\'' +
+                ", label='" + label + "' " +
+                "param1='" + param1 + "'" +
                 '}';
     }
 }
