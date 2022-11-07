@@ -40,8 +40,7 @@ public class EntityClassMetaDataImpl<T> implements EntityClassMetaData<T>{
     public Constructor<T> getConstructor() {
         if(constructor == null) {
             try {
-                var params = getAllFields().stream().map(Field::getType).toArray(Class[]::new);
-                constructor = clazz.getConstructor(params);
+                constructor = clazz.getConstructor();
             } catch (NoSuchMethodException e) {
                 throw new RuntimeException(e);
             }

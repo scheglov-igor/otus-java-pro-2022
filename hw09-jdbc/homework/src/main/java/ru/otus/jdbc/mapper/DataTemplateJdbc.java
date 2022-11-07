@@ -37,12 +37,12 @@ public class DataTemplateJdbc<T> implements DataTemplate<T> {
     }
 
     private T createInstance(ResultSet rs) throws SQLException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        int argsCount = entityClassMetaData.getAllFields().size();
-        Object[] args = new Object[argsCount];
-        for (int i = 0; i < argsCount; i++) {
-            args[i] = rs.getObject(i+1);
+        T instance = entityClassMetaData.getConstructor().newInstance();
+        for(Field field: entityClassMetaData.getAllFields()) {
+            field.setAccessible(true);
+            field.set(instance, rs.getObject(field.getName()));
         }
-        return entityClassMetaData.getConstructor().newInstance(args);
+        return instance;
     }
 
     @Override
