@@ -28,7 +28,7 @@ public class DbServiceDemo {
         var clientTemplate = new ClientDataTemplateJdbc(dbExecutor); //реализация DataTemplate, заточена на Client
 
 ///
-        var dbServiceClient = new DbServiceClientImpl(transactionRunner, clientTemplate);
+        var dbServiceClient = new DbServiceClientImpl(transactionRunner, clientTemplate, null);
         dbServiceClient.saveClient(new Client("dbServiceFirst"));
 
         var clientSecond = dbServiceClient.saveClient(new Client("dbServiceSecond"));

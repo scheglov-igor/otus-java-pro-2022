@@ -3,6 +3,8 @@ package ru.otus;
 import org.flywaydb.core.Flyway;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.otus.cachehw.HwCache;
+import ru.otus.cachehw.MyCache;
 import ru.otus.core.repository.executor.DbExecutorImpl;
 import ru.otus.core.sessionmanager.TransactionRunnerJdbc;
 import ru.otus.crm.datasource.DriverManagerDataSource;
@@ -13,6 +15,9 @@ import ru.otus.crm.service.DbServiceManagerImpl;
 import ru.otus.jdbc.mapper.*;
 
 import javax.sql.DataSource;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeWork {
     private static final String URL = "jdbc:postgresql://localhost:5430/demoDB";
@@ -30,15 +35,36 @@ public class HomeWork {
 
 
 // Работа с клиентом
-        //TODO здесь у меня куча повторяющихся generic'ов - это нормально?
-        // или можно как-то оптимизировать?
         EntityClassMetaData<Client> entityClassMetaDataClient = new EntityClassMetaDataImpl<>(Client.class);
         EntitySQLMetaData entitySQLMetaDataClient = new EntitySQLMetaDataImpl<>(entityClassMetaDataClient);
         var dataTemplateClient = new DataTemplateJdbc<>(dbExecutor, entitySQLMetaDataClient, entityClassMetaDataClient); //реализация DataTemplate, универсальная
+        HwCache<Long, Client> cache = new MyCache<>();
 
-// Код дальше должен остаться
-        var dbServiceClient = new DbServiceClientImpl(transactionRunner, dataTemplateClient);
-        dbServiceClient.saveClient(new Client("dbServiceFirst"));
+        var dbServiceClient = new DbServiceClientImpl(transactionRunner, dataTemplateClient, cache);
+//        var dbServiceClient = new DbServiceClientImpl(transactionRunner, dataTemplateClient, null);
+
+        LocalDateTime t1 = LocalDateTime.now();
+        List<Long> idList = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            var c =dbServiceClient.saveClient(new Client("dbServiceFirst"));
+            idList.add(c.getId());
+        }
+        LocalDateTime t2 = LocalDateTime.now();
+
+
+        for (int j = 0; j < 100; j++) {
+            for (Long id: idList) {
+                var clientSecondSelected = dbServiceClient.getClient(id)
+                        .orElseThrow(() -> new RuntimeException("Client not found" + id));
+            }
+        }
+        LocalDateTime t3 = LocalDateTime.now();
+
+        System.out.println("start insert" + t1);
+        System.out.println("finish insert" + t2);
+
+        System.out.println("start select" + t2);
+        System.out.println("finish select" + t3);
 
         var clientSecond = dbServiceClient.saveClient(new Client("dbServiceSecond"));
         clientSecond.setName("newClientName");
@@ -48,28 +74,6 @@ public class HomeWork {
                 .orElseThrow(() -> new RuntimeException("Client not found, id:" + clientSecond.getId()));
         log.info("clientSecondSelected:{}", clientSecondSelected);
 
-// Сделайте тоже самое с классом Manager (для него надо сделать свою таблицу)
-
-        EntityClassMetaData<Manager> entityClassMetaDataManager = new EntityClassMetaDataImpl<>(Manager.class);
-        EntitySQLMetaData entitySQLMetaDataManager = new EntitySQLMetaDataImpl<>(entityClassMetaDataManager);
-        var dataTemplateManager = new DataTemplateJdbc<>(dbExecutor, entitySQLMetaDataManager, entityClassMetaDataManager);
-
-        var dbServiceManager = new DbServiceManagerImpl(transactionRunner, dataTemplateManager);
-        dbServiceManager.saveManager(new Manager("ManagerFirst"));
-
-        var tmpManager = new Manager("ManagerSecond");
-        tmpManager.setParam1("testParam");
-        var managerSecond = dbServiceManager.saveManager(tmpManager);
-        managerSecond.setLabel("newLabel");
-        managerSecond.setParam1("newParam");
-        Manager managerSecondNew = dbServiceManager.saveManager(managerSecond);
-
-        var managerSecondSelected = dbServiceManager.getManager(managerSecond.getNo())
-                .orElseThrow(() -> new RuntimeException("Manager not found, id:" + managerSecond.getNo()));
-        log.info("managerSecondSelected:{}", managerSecondSelected);
-
-        var allManagers = dbServiceManager.findAll();
-        log.info("total count of managers: {}", allManagers.size());
     }
 
     private static void flywayMigrations(DataSource dataSource) {
