@@ -27,6 +27,7 @@ allprojects {
         dependencies {
             imports {
                 mavenBom("org.springframework.boot:spring-boot-dependencies:2.6.6")
+                mavenBom "org.testcontainers:testcontainers-bom:1.17.3"
                 mavenBom "com.google.protobuf:protobuf-bom:3.21.1"
             }
             dependency "com.google.guava:guava:${Versions.guava}"
