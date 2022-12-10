@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Клиенты</title>
+</head>
+
+<body>
+<h4>Создать нового клиента</h4>
+<form action="clients" method="post">
+    <input type="text" name = "clientName" placeholder="Введите имя клиента">
+    <input type="submit" value="Сохранить"/>
+</form>
+
+<h4>Все клиенты</h4>
+<table style="width: 400px">
+    <thead>
+        <tr>
+            <td style="width: 50px">Id</td>
+            <td style="width: 150px">Имя</td>
+        </tr>
+    </thead>
+    <tbody>
+        <#list allClients as client>
+            <tr>
+                <td>${client.id}</td>
+                <td>${client.name}</td>
+            </tr>
+        </#list>
+    </tbody>
+</table>
+</body>
+</html>
