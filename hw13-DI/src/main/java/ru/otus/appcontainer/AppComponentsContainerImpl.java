@@ -14,8 +14,7 @@ import java.util.*;
 
 public class AppComponentsContainerImpl implements AppComponentsContainer {
 
-    private final List<Object> appComponents = new ArrayList<>();
-
+    private final List<BeanType> appComponents = new ArrayList<>();
     private final Map<String, Object> appComponentsByName = new HashMap<>();
 
     public AppComponentsContainerImpl(Class<?> initialConfigClass) {
@@ -24,90 +23,49 @@ public class AppComponentsContainerImpl implements AppComponentsContainer {
 
     private void processConfig(Class<?> configClass) {
         checkConfigClass(configClass);
-        // You code here...
 
         try {
-            Constructor constructor = configClass.getConstructor();
-            AppConfig instance = (AppConfig) constructor.newInstance();
-
-            System.out.println("instance = " + instance);
-
-            AppComponentsContainerConfig accc = configClass.getAnnotation(AppComponentsContainerConfig.class);
-            System.out.println("accc = " + accc);
-            System.out.println("accc.order() = " + accc.order());
+            Object instance = configClass.getConstructor().newInstance();
 
             Method[] methods = configClass.getDeclaredMethods();
-            System.out.println("methods = " + methods);
 
-            //
-            List<Method> orderedComponentMethods = new ArrayList<>();
+            List<Method> orderedComponentMethods = Arrays.stream(methods)
+                    .filter(method -> method.isAnnotationPresent(AppComponent.class))
+                    .sorted((o1, o2) -> (o1.getAnnotation(AppComponent.class).order() - o2.getAnnotation(AppComponent.class).order()))
+                    .toList();
 
-            for (Method m: methods) {
-                if(m.isAnnotationPresent(AppComponent.class)) {
-                    System.out.println("m??? = " + m);
-                    orderedComponentMethods.add(m);
-                }
-            }
+            for (Method method: orderedComponentMethods) {
 
-            orderedComponentMethods.sort((o1, o2) ->
-                    (o1.getAnnotation(AppComponent.class).order()
-                            - o2.getAnnotation(AppComponent.class).order()));
+                AppComponent appComponent = method.getAnnotation(AppComponent.class);
+                String name = appComponent.name();
 
-            for (Method m: orderedComponentMethods) {
-                System.out.println("m = " + m);
+                Parameter[] parameters = method.getParameters();
 
-                AppComponent ac = m.getAnnotation(AppComponent.class);
-                System.out.println("ac = " + ac);
-                int order = ac.order();
-                String name = ac.name();
-                System.out.println(order + " -> " + name);
-
-                Parameter[] parameters = m.getParameters();
-                System.out.println("parameters.length = " + parameters.length);
-
-                Class retClass = m.getReturnType();
-                System.out.println("retClass = " + retClass);
+                Object beanInstance = null;
 
                 if(parameters.length == 0) {
-                    Object o = m.invoke(instance);
-
-                    System.out.println("o = " + o);
-                    System.out.println("o.getClass() = " + o.getClass());
-                    
-                    appComponentsByName.put(name, o);
-                    appComponents.add(o);
-
+                    beanInstance = method.invoke(instance);
                 }
                 else {
                     Object[] paramObjects = new Object[parameters.length];
-
                     for (int i = 0; i < parameters.length; i++) {
-                        Parameter param = parameters[i];
-                        System.out.println("param = " + param);
-                        System.out.println("param.getName() = " + param.getName());
-                        System.out.println("param.getType() = " + param.getType());
-
-                        Object oooo = getAppComponent(param.getType());
-                        System.out.println("oooo = " + oooo);
-                        paramObjects[i] = oooo;
+                        paramObjects[i] = getAppComponent(parameters[i].getType());
                     }
-                    Object o = m.invoke(instance, paramObjects);
-                    appComponentsByName.put(name, o);
-                    appComponents.add(o);
-
+                    beanInstance = method.invoke(instance, paramObjects);
                 }
 
+                Object repeatBean = appComponentsByName.put(name, beanInstance);
+                if(repeatBean != null) {
+                    throw new RuntimeException(String.format("Repeated bean name %s", name));
+                }
 
+                List<Class> beanTypes = new ArrayList<>();
+                beanTypes.add(method.getReturnType());
+                beanTypes.add(beanInstance.getClass());
+                BeanType bt = new BeanType(beanTypes, beanInstance);
 
+                appComponents.add(bt);
             }
-
-//        System.out.println("m = " + m);
-//
-//
-
-
-
-
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         } catch (InvocationTargetException e) {
@@ -117,8 +75,6 @@ public class AppComponentsContainerImpl implements AppComponentsContainer {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     private void checkConfigClass(Class<?> configClass) {
@@ -129,50 +85,23 @@ public class AppComponentsContainerImpl implements AppComponentsContainer {
 
     @Override
     public <C> C getAppComponent(Class<C> componentClass) {
-        System.out.println("---------------");
-        System.out.println("componentClass = " + componentClass);
-        System.out.println("appComponents = " + appComponents);
-        C returnObject = null;
+        C returnBean = null;
 
-     //   System.out.println("returnObject.getClass() = " + returnObject.getClass());
-        System.out.println("---------------");
-        for (Object appComponent: appComponents) {
-            System.out.println("appComponent.getClass() = " + appComponent.getClass());
-
-            if(componentClass == appComponent.getClass()) {
-                if(returnObject == null) {
-                    returnObject = (C) appComponent;
-                }
-                else {
-                    throw new IllegalArgumentException(String.format("There are many beans of type %s", componentClass.getName()));
-                }
-            }
-            else {
-                Class[] interfaces = appComponent.getClass().getInterfaces();
-                for (Class interf : interfaces) {
-                    System.out.println("interf = " + interf);
-                    System.out.println("componentClass == interf = " + (componentClass == interf));
-
-                    if (componentClass == interf) {
-                        if (returnObject == null) {
-                            returnObject = (C) appComponent;
-                        } else {
-                            throw new IllegalArgumentException(String.format("There are many beans of type %s", componentClass.getName()));
-                        }
+        for (BeanType beanType: appComponents) {
+            for(Class type: beanType.getBeanType()) {
+               if (componentClass == type) {
+                    if (returnBean == null) {
+                        returnBean = (C) beanType.getBean();
+                    } else {
+                        throw new RuntimeException(String.format("There are many beans of type %s", componentClass.getName()));
                     }
                 }
             }
-
-//            System.out.println("(appComponent.getClass() == componentClass = " + (appComponent.getClass() == componentClass));
-//            System.out.println("appComponent.getClass().isInstance(componentClass) = " + appComponent.getClass().isInstance(componentClass));
-//            System.out.println("!!! " + (componentClass.getClass().isInstance(appComponent)));
-
-
         }
-        if (returnObject == null) {
-            throw new IllegalArgumentException(String.format("There are no beans of type %s", componentClass.getName()));
+        if (returnBean == null) {
+            throw new RuntimeException(String.format("There are no beans of type %s", componentClass.getName()));
         }
-        return returnObject;
+        return returnBean;
 
     }
 
@@ -181,7 +110,7 @@ public class AppComponentsContainerImpl implements AppComponentsContainer {
         Object returnObject = appComponentsByName.get(componentName);
 
         if (returnObject == null) {
-            throw new IllegalArgumentException(String.format("There are no beans of name %s", componentName));
+            throw new RuntimeException(String.format("There are no beans of name %s", componentName));
         }
         return (C) returnObject;
     }
