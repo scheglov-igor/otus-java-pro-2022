@@ -1,21 +1,37 @@
 package ru.otus.appcontainer;
 
+import org.reflections.Reflections;
+import org.reflections.scanners.SubTypesScanner;
 import ru.otus.appcontainer.api.AppComponent;
 import ru.otus.appcontainer.api.AppComponentsContainer;
 import ru.otus.appcontainer.api.AppComponentsContainerConfig;
-import ru.otus.config.AppConfig;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class AppComponentsContainerImpl implements AppComponentsContainer {
 
     private final List<BeanType> appComponents = new ArrayList<>();
     private final Map<String, Object> appComponentsByName = new HashMap<>();
+
+    public AppComponentsContainerImpl(String packageName) {
+
+        Reflections reflections = new Reflections(packageName);
+        reflections.getTypesAnnotatedWith(AppComponentsContainerConfig.class).stream()
+                .sorted((o1, o2) -> (o1.getAnnotation(AppComponentsContainerConfig.class).order() - o2.getAnnotation(AppComponentsContainerConfig.class).order()))
+                .forEach(this::processConfig);
+    }
+
+    public AppComponentsContainerImpl(Class<?>... initialConfigClass) {
+
+        Arrays.stream(initialConfigClass)
+            .filter(aClass -> aClass.isAnnotationPresent(AppComponentsContainerConfig.class))
+            .sorted((o1, o2) -> (o1.getAnnotation(AppComponentsContainerConfig.class).order() - o2.getAnnotation(AppComponentsContainerConfig.class).order()))
+            .forEach(this::processConfig);
+    }
 
     public AppComponentsContainerImpl(Class<?> initialConfigClass) {
         processConfig(initialConfigClass);
