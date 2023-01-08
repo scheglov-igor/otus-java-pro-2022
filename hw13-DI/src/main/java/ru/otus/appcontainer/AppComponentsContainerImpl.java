@@ -21,7 +21,8 @@ public class AppComponentsContainerImpl implements AppComponentsContainer {
 
         Reflections reflections = new Reflections(packageName);
         reflections.getTypesAnnotatedWith(AppComponentsContainerConfig.class).stream()
-                .sorted((o1, o2) -> (o1.getAnnotation(AppComponentsContainerConfig.class).order() - o2.getAnnotation(AppComponentsContainerConfig.class).order()))
+               // .sorted((o1, o2) -> (o1.getAnnotation(AppComponentsContainerConfig.class).order() - o2.getAnnotation(AppComponentsContainerConfig.class).order()))
+                .sorted(Comparator.comparingInt(o -> o.getAnnotation(AppComponentsContainerConfig.class).order()))
                 .forEach(this::processConfig);
     }
 
@@ -29,7 +30,8 @@ public class AppComponentsContainerImpl implements AppComponentsContainer {
 
         Arrays.stream(initialConfigClass)
             .filter(aClass -> aClass.isAnnotationPresent(AppComponentsContainerConfig.class))
-            .sorted((o1, o2) -> (o1.getAnnotation(AppComponentsContainerConfig.class).order() - o2.getAnnotation(AppComponentsContainerConfig.class).order()))
+//            .sorted((o1, o2) -> (o1.getAnnotation(AppComponentsContainerConfig.class).order() - o2.getAnnotation(AppComponentsContainerConfig.class).order()))
+            .sorted(Comparator.comparingInt(o -> o.getAnnotation(AppComponentsContainerConfig.class).order()))
             .forEach(this::processConfig);
     }
 
@@ -47,7 +49,8 @@ public class AppComponentsContainerImpl implements AppComponentsContainer {
 
             List<Method> orderedComponentMethods = Arrays.stream(methods)
                     .filter(method -> method.isAnnotationPresent(AppComponent.class))
-                    .sorted((o1, o2) -> (o1.getAnnotation(AppComponent.class).order() - o2.getAnnotation(AppComponent.class).order()))
+//                    .sorted((o1, o2) -> (o1.getAnnotation(AppComponent.class).order() - o2.getAnnotation(AppComponent.class).order()))
+                    .sorted(Comparator.comparingInt(o -> o.getAnnotation(AppComponent.class).order()))
                     .toList();
 
             for (Method method: orderedComponentMethods) {
