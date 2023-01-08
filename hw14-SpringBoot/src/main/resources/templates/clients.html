@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Клиенты</title>
+</head>
+
+<body>
+<h4>Создать нового клиента</h4>
+<form action="client" method="post">
+    <input type="text" name = "name" placeholder="Введите имя клиента">
+    <input type="submit" value="Сохранить"/>
+</form>
+
+<h4>Все клиенты</h4>
+<table style="width: 400px">
+    <thead>
+        <tr>
+            <td style="width: 50px">Id</td>
+            <td style="width: 150px">Имя</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="client: ${clients}">
+            <td th:text="${client.id}">id</td>
+            <td th:text="${client.name}">имя</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
