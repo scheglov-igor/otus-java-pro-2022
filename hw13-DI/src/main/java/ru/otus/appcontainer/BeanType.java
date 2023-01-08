@@ -3,8 +3,8 @@ package ru.otus.appcontainer;
 import java.util.List;
 
 public class BeanType {
-    List<Class> beanType;
-    Object bean;
+    private final List<Class> beanType;
+    private final Object bean;
 
     public BeanType(List<Class> beanType, Object bean) {
         this.beanType = beanType;
@@ -15,16 +15,8 @@ public class BeanType {
         return beanType;
     }
 
-    public void setBeanType(List<Class> beanType) {
-        this.beanType = beanType;
-    }
-
     public Object getBean() {
         return bean;
-    }
-
-    public void setBean(Object bean) {
-        this.bean = bean;
     }
 
     @Override
