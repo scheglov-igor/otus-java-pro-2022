@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="c4b77572-aad8-4d07-95a9-c49d95f60f0f" activeEnvironment="Default" name="AgreedRoutes" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="59eedcda-1b5c-4f60-a008-050c639dc6c9" wsaVersion="NONE" name="AgreedRoutesSoap12" type="wsdl" bindingName="{http://SOME/WSERVICE}AgreedRoutesSoap12" soapVersion="1_2" anonymous="optional" definition="https://someurl/WSERVICE/1.1/AgreedRoutes.asmx?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>https://someurl/WSERVICE/1.0/AgreedRoutes.asmx</con:endpoint></con:endpoints><con:operation id="382af33e-4e14-48af-9372-3af46db24767" isOneWay="false" action="http://SOME/WSERVICE/DeleteActiveRstrArea" name="DeleteActiveRstrArea" bindingOperationName="DeleteActiveRstrArea" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="24eec755-2bd5-473e-ab91-8643f9b425dc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://someurl/WSERVICE/1.0/AgreedRoutes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cbd2="http://SOME/WSERVICE">
+   <soap:Header>
+      <cbd2:UserClaims>
+         <cbd2:zc_id>?</cbd2:zc_id>
+      </cbd2:UserClaims>
+      <cbd2:AuthData>
+         <!--Optional:-->
+         <cbd2:login>?</cbd2:login>
+         <!--Optional:-->
+         <cbd2:password>?</cbd2:password>
+      </cbd2:AuthData>
+   </soap:Header>
+   <soap:Body>
+      <cbd2:DeleteActiveRstrArea>
+         <cbd2:id>?</cbd2:id>
+      </cbd2:DeleteActiveRstrArea>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://SOME/WSERVICE/AgreedRoutesSoap/DeleteActiveRstrAreaRequest"/></con:call></con:operation><con:operation id="fdf055c2-10e2-444b-8ab8-7f7c893591b2" isOneWay="false" action="http://SOME/WSERVICE/DeleteAgreedSegment" name="DeleteAgreedSegment" bindingOperationName="DeleteAgreedSegment" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="56d3e9e8-75d7-47bb-bf18-8c921c960781" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://someurl/WSERVICE/1.0/AgreedRoutes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cbd2="http://SOME/WSERVICE">
+   <soap:Header>
+      <cbd2:UserClaims>
+         <cbd2:zc_id>?</cbd2:zc_id>
+      </cbd2:UserClaims>
+      <cbd2:AuthData>
+         <!--Optional:-->
+         <cbd2:login>?</cbd2:login>
+         <!--Optional:-->
+         <cbd2:password>?</cbd2:password>
+      </cbd2:AuthData>
+   </soap:Header>
+   <soap:Body>
+      <cbd2:DeleteAgreedSegment>
+         <cbd2:id>?</cbd2:id>
+      </cbd2:DeleteAgreedSegment>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://SOME/WSERVICE/AgreedRoutesSoap/DeleteAgreedSegmentRequest"/></con:call></con:operation><con:operation id="fc22e39a-5979-4eb6-a29c-0841c847e56f" isOneWay="false" action="http://SOME/WSERVICE/GetActiveRstrAreas" name="GetActiveRstrAreas" bindingOperationName="GetActiveRstrAreas" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d6222804-934b-4535-b19d-cbe29e2ecbe2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://someurl/WSERVICE/1.0/AgreedRoutes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cbd2="http://SOME/WSERVICE">
+   <soap:Header>
+      <cbd2:AuthData>
+         <!--Optional:-->
+         <cbd2:login>?</cbd2:login>
+         <!--Optional:-->
+         <cbd2:password>?</cbd2:password>
+      </cbd2:AuthData>
+   </soap:Header>
+   <soap:Body>
+      <cbd2:GetActiveRstrAreas>
+         <!--Optional:-->
+         <cbd2:token>?</cbd2:token>
+      </cbd2:GetActiveRstrAreas>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://SOME/WSERVICE/AgreedRoutesSoap/GetActiveRstrAreasRequest"/></con:call></con:operation><con:operation id="fffe7f81-85a8-4143-a17a-b03fd2756698" isOneWay="false" action="http://SOME/WSERVICE/GetAgreedSegments" name="GetAgreedSegments" bindingOperationName="GetAgreedSegments" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3bbe8b6d-5d56-44a6-9800-3809e4505f3b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://someurl/WSERVICE/1.0/AgreedRoutes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cbd2="http://SOME/WSERVICE">
+   <soap:Header>
+      <cbd2:AuthData>
+         <!--Optional:-->
+         <cbd2:login>?</cbd2:login>
+         <!--Optional:-->
+         <cbd2:password>?</cbd2:password>
+      </cbd2:AuthData>
+   </soap:Header>
+   <soap:Body>
+      <cbd2:GetAgreedSegments>
+         <!--Optional:-->
+         <cbd2:token>?</cbd2:token>
+         <!--Optional:-->
+         <cbd2:options>?</cbd2:options>
+      </cbd2:GetAgreedSegments>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://SOME/WSERVICE/AgreedRoutesSoap/GetAgreedSegmentsRequest"/></con:call></con:operation><con:operation id="ecd47d6e-0987-4ef4-967e-4bebbaeae72a" isOneWay="false" action="http://SOME/WSERVICE/SendActiveRstrArea" name="SendActiveRstrArea" bindingOperationName="SendActiveRstrArea" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ee1b022e-8e45-43d8-9c77-d5528e6c5a74" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://someurl/WSERVICE/1.0/AgreedRoutes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cbd2="http://SOME/WSERVICE">
+   <soap:Header>
+      <cbd2:UserClaims>
+         <cbd2:zc_id>?</cbd2:zc_id>
+      </cbd2:UserClaims>
+      <cbd2:AuthData>
+         <!--Optional:-->
+         <cbd2:login>?</cbd2:login>
+         <!--Optional:-->
+         <cbd2:password>?</cbd2:password>
+      </cbd2:AuthData>
+   </soap:Header>
+   <soap:Body>
+      <cbd2:SendActiveRstrArea>
+         <cbd2:id>?</cbd2:id>
+         <!--Optional:-->
+         <cbd2:areaCode>?</cbd2:areaCode>
+         <!--Optional:-->
+         <cbd2:lowLevel>?</cbd2:lowLevel>
+         <!--Optional:-->
+         <cbd2:highLevel>?</cbd2:highLevel>
+         <!--Optional:-->
+         <cbd2:dateFrom>?</cbd2:dateFrom>
+         <!--Optional:-->
+         <cbd2:dateTo>?</cbd2:dateTo>
+         <!--Optional:-->
+         <cbd2:exceptionMsg>?</cbd2:exceptionMsg>
+         <cbd2:rstrAreaId>?</cbd2:rstrAreaId>
+         <cbd2:brdParmsId>?</cbd2:brdParmsId>
+      </cbd2:SendActiveRstrArea>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://SOME/WSERVICE/AgreedRoutesSoap/SendActiveRstrAreaRequest"/></con:call></con:operation><con:operation id="3b8decdf-0384-4afa-86c5-89dd18443e15" isOneWay="false" action="http://SOME/WSERVICE/SendAgreedSegment" name="SendAgreedSegment" bindingOperationName="SendAgreedSegment" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="adddd001-3000-4809-8a7d-dd03173d1cae" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://someurl/WSERVICE/1.0/AgreedRoutes.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:cbd2="http://SOME/WSERVICE">
+   <soap:Header>
+      <cbd2:UserClaims>
+         <cbd2:zc_id>?</cbd2:zc_id>
+      </cbd2:UserClaims>
+      <cbd2:AuthData>
+         <!--Optional:-->
+         <cbd2:login>?</cbd2:login>
+         <!--Optional:-->
+         <cbd2:password>?</cbd2:password>
+      </cbd2:AuthData>
+   </soap:Header>
+   <soap:Body>
+      <cbd2:SendAgreedSegment>
+         <cbd2:id>?</cbd2:id>
+         <!--Optional:-->
+         <cbd2:airwayCode>?</cbd2:airwayCode>
+         <!--Optional:-->
+         <cbd2:atsBeginPoint>?</cbd2:atsBeginPoint>
+         <!--Optional:-->
+         <cbd2:atsEndPoint>?</cbd2:atsEndPoint>
+         <cbd2:isOneWay>?</cbd2:isOneWay>
+         <!--Optional:-->
+         <cbd2:levelFrom>?</cbd2:levelFrom>
+         <!--Optional:-->
+         <cbd2:levelTo>?</cbd2:levelTo>
+         <!--Optional:-->
+         <cbd2:dateFrom>?</cbd2:dateFrom>
+         <!--Optional:-->
+         <cbd2:dateTo>?</cbd2:dateTo>
+         <!--Optional:-->
+         <cbd2:exceptionMsg>?</cbd2:exceptionMsg>
+      </cbd2:SendAgreedSegment>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://SOME/WSERVICE/AgreedRoutesSoap/SendAgreedSegmentRequest"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="d02c2c3b-6ef0-4c2b-bfbd-9933b6e278b2" wsaVersion="NONE" name="AgreedRoutesSoap" type="wsdl" bindingName="{http://SOME/WSERVICE}AgreedRoutesSoap" soapVersion="1_1" anonymous="optional" definition="https://someurl/WSERVICE/1.1/AgreedRoutes.asmx?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://someurl/WSERVICE/1.1/AgreedRoutes.asmx?WSDL"><con:part><con:url>https://someurl/WSERVICE/1.1/AgreedRoutes.asmx?WSDL</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://SOME/WSERVICE" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://SOME/WSERVICE" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://SOME/WSERVICE">
+      <s:element name="GetAgreedSegments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="options" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgreedSegmentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAgreedSegmentsResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthData" type="tns:AuthData"/>
+      <s:complexType name="AuthData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string"/>
+        </s:sequence>
+        <s:anyAttribute/>
+      </s:complexType>
+      <s:element name="SendAgreedSegment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="airwayCode" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="atsBeginPoint" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="atsEndPoint" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="isOneWay" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="levelFrom" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="levelTo" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="dateFrom" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="dateTo" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="exceptionMsg" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendAgreedSegmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendAgreedSegmentResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UserClaims" type="tns:UserClaims"/>
+      <s:complexType name="UserClaims">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="zc_id" type="s:decimal"/>
+        </s:sequence>
+        <s:anyAttribute/>
+      </s:complexType>
+      <s:element name="DeleteAgreedSegment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAgreedSegmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteAgreedSegmentResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActiveRstrAreas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActiveRstrAreasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActiveRstrAreasResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendActiveRstrArea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="areaCode" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="lowLevel" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="highLevel" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="dateFrom" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="dateTo" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="exceptionMsg" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="rstrAreaId" type="s:int"/>
+            <s:element minOccurs="1" maxOccurs="1" name="brdParmsId" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendActiveRstrAreaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendActiveRstrAreaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteActiveRstrArea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteActiveRstrAreaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteActiveRstrAreaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAgreedSegmentsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAgreedSegments"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgreedSegmentsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAgreedSegmentsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgreedSegmentsAuthData">
+    <wsdl:part name="AuthData" element="tns:AuthData"/>
+  </wsdl:message>
+  <wsdl:message name="SendAgreedSegmentSoapIn">
+    <wsdl:part name="parameters" element="tns:SendAgreedSegment"/>
+  </wsdl:message>
+  <wsdl:message name="SendAgreedSegmentSoapOut">
+    <wsdl:part name="parameters" element="tns:SendAgreedSegmentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendAgreedSegmentAuthData">
+    <wsdl:part name="AuthData" element="tns:AuthData"/>
+  </wsdl:message>
+  <wsdl:message name="SendAgreedSegmentUserClaims">
+    <wsdl:part name="UserClaims" element="tns:UserClaims"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteAgreedSegmentSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAgreedSegment"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteAgreedSegmentSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAgreedSegmentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteAgreedSegmentAuthData">
+    <wsdl:part name="AuthData" element="tns:AuthData"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteAgreedSegmentUserClaims">
+    <wsdl:part name="UserClaims" element="tns:UserClaims"/>
+  </wsdl:message>
+  <wsdl:message name="GetActiveRstrAreasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActiveRstrAreas"/>
+  </wsdl:message>
+  <wsdl:message name="GetActiveRstrAreasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActiveRstrAreasResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetActiveRstrAreasAuthData">
+    <wsdl:part name="AuthData" element="tns:AuthData"/>
+  </wsdl:message>
+  <wsdl:message name="SendActiveRstrAreaSoapIn">
+    <wsdl:part name="parameters" element="tns:SendActiveRstrArea"/>
+  </wsdl:message>
+  <wsdl:message name="SendActiveRstrAreaSoapOut">
+    <wsdl:part name="parameters" element="tns:SendActiveRstrAreaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendActiveRstrAreaAuthData">
+    <wsdl:part name="AuthData" element="tns:AuthData"/>
+  </wsdl:message>
+  <wsdl:message name="SendActiveRstrAreaUserClaims">
+    <wsdl:part name="UserClaims" element="tns:UserClaims"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteActiveRstrAreaSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteActiveRstrArea"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteActiveRstrAreaSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteActiveRstrAreaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteActiveRstrAreaAuthData">
+    <wsdl:part name="AuthData" element="tns:AuthData"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteActiveRstrAreaUserClaims">
+    <wsdl:part name="UserClaims" element="tns:UserClaims"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgreedSegmentsHttpGetIn">
+    <wsdl:part name="token" type="s:string"/>
+    <wsdl:part name="options" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgreedSegmentsHttpGetOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="SendAgreedSegmentHttpGetIn">
+    <wsdl:part name="id" type="s:string"/>
+    <wsdl:part name="airwayCode" type="s:string"/>
+    <wsdl:part name="atsBeginPoint" type="s:string"/>
+    <wsdl:part name="atsEndPoint" type="s:string"/>
+    <wsdl:part name="isOneWay" type="s:string"/>
+    <wsdl:part name="levelFrom" type="s:string"/>
+    <wsdl:part name="levelTo" type="s:string"/>
+    <wsdl:part name="dateFrom" type="s:string"/>
+    <wsdl:part name="dateTo" type="s:string"/>
+    <wsdl:part name="exceptionMsg" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendAgreedSegmentHttpGetOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteAgreedSegmentHttpGetIn">
+    <wsdl:part name="id" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteAgreedSegmentHttpGetOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="GetActiveRstrAreasHttpGetIn">
+    <wsdl:part name="token" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetActiveRstrAreasHttpGetOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="SendActiveRstrAreaHttpGetIn">
+    <wsdl:part name="id" type="s:string"/>
+    <wsdl:part name="areaCode" type="s:string"/>
+    <wsdl:part name="lowLevel" type="s:string"/>
+    <wsdl:part name="highLevel" type="s:string"/>
+    <wsdl:part name="dateFrom" type="s:string"/>
+    <wsdl:part name="dateTo" type="s:string"/>
+    <wsdl:part name="exceptionMsg" type="s:string"/>
+    <wsdl:part name="rstrAreaId" type="s:string"/>
+    <wsdl:part name="brdParmsId" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendActiveRstrAreaHttpGetOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteActiveRstrAreaHttpGetIn">
+    <wsdl:part name="id" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteActiveRstrAreaHttpGetOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgreedSegmentsHttpPostIn">
+    <wsdl:part name="token" type="s:string"/>
+    <wsdl:part name="options" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetAgreedSegmentsHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="SendAgreedSegmentHttpPostIn">
+    <wsdl:part name="id" type="s:string"/>
+    <wsdl:part name="airwayCode" type="s:string"/>
+    <wsdl:part name="atsBeginPoint" type="s:string"/>
+    <wsdl:part name="atsEndPoint" type="s:string"/>
+    <wsdl:part name="isOneWay" type="s:string"/>
+    <wsdl:part name="levelFrom" type="s:string"/>
+    <wsdl:part name="levelTo" type="s:string"/>
+    <wsdl:part name="dateFrom" type="s:string"/>
+    <wsdl:part name="dateTo" type="s:string"/>
+    <wsdl:part name="exceptionMsg" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendAgreedSegmentHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteAgreedSegmentHttpPostIn">
+    <wsdl:part name="id" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteAgreedSegmentHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="GetActiveRstrAreasHttpPostIn">
+    <wsdl:part name="token" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetActiveRstrAreasHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="SendActiveRstrAreaHttpPostIn">
+    <wsdl:part name="id" type="s:string"/>
+    <wsdl:part name="areaCode" type="s:string"/>
+    <wsdl:part name="lowLevel" type="s:string"/>
+    <wsdl:part name="highLevel" type="s:string"/>
+    <wsdl:part name="dateFrom" type="s:string"/>
+    <wsdl:part name="dateTo" type="s:string"/>
+    <wsdl:part name="exceptionMsg" type="s:string"/>
+    <wsdl:part name="rstrAreaId" type="s:string"/>
+    <wsdl:part name="brdParmsId" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendActiveRstrAreaHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteActiveRstrAreaHttpPostIn">
+    <wsdl:part name="id" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteActiveRstrAreaHttpPostOut">
+    <wsdl:part name="Body"/>
+  </wsdl:message>
+  <wsdl:portType name="AgreedRoutesSoap">
+    <wsdl:operation name="GetAgreedSegments">
+      <wsdl:input message="tns:GetAgreedSegmentsSoapIn"/>
+      <wsdl:output message="tns:GetAgreedSegmentsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendAgreedSegment">
+      <wsdl:input message="tns:SendAgreedSegmentSoapIn"/>
+      <wsdl:output message="tns:SendAgreedSegmentSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAgreedSegment">
+      <wsdl:input message="tns:DeleteAgreedSegmentSoapIn"/>
+      <wsdl:output message="tns:DeleteAgreedSegmentSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveRstrAreas">
+      <wsdl:input message="tns:GetActiveRstrAreasSoapIn"/>
+      <wsdl:output message="tns:GetActiveRstrAreasSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendActiveRstrArea">
+      <wsdl:input message="tns:SendActiveRstrAreaSoapIn"/>
+      <wsdl:output message="tns:SendActiveRstrAreaSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActiveRstrArea">
+      <wsdl:input message="tns:DeleteActiveRstrAreaSoapIn"/>
+      <wsdl:output message="tns:DeleteActiveRstrAreaSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AgreedRoutesHttpGet">
+    <wsdl:operation name="GetAgreedSegments">
+      <wsdl:input message="tns:GetAgreedSegmentsHttpGetIn"/>
+      <wsdl:output message="tns:GetAgreedSegmentsHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendAgreedSegment">
+      <wsdl:input message="tns:SendAgreedSegmentHttpGetIn"/>
+      <wsdl:output message="tns:SendAgreedSegmentHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAgreedSegment">
+      <wsdl:input message="tns:DeleteAgreedSegmentHttpGetIn"/>
+      <wsdl:output message="tns:DeleteAgreedSegmentHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveRstrAreas">
+      <wsdl:input message="tns:GetActiveRstrAreasHttpGetIn"/>
+      <wsdl:output message="tns:GetActiveRstrAreasHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendActiveRstrArea">
+      <wsdl:input message="tns:SendActiveRstrAreaHttpGetIn"/>
+      <wsdl:output message="tns:SendActiveRstrAreaHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActiveRstrArea">
+      <wsdl:input message="tns:DeleteActiveRstrAreaHttpGetIn"/>
+      <wsdl:output message="tns:DeleteActiveRstrAreaHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AgreedRoutesHttpPost">
+    <wsdl:operation name="GetAgreedSegments">
+      <wsdl:input message="tns:GetAgreedSegmentsHttpPostIn"/>
+      <wsdl:output message="tns:GetAgreedSegmentsHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendAgreedSegment">
+      <wsdl:input message="tns:SendAgreedSegmentHttpPostIn"/>
+      <wsdl:output message="tns:SendAgreedSegmentHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAgreedSegment">
+      <wsdl:input message="tns:DeleteAgreedSegmentHttpPostIn"/>
+      <wsdl:output message="tns:DeleteAgreedSegmentHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveRstrAreas">
+      <wsdl:input message="tns:GetActiveRstrAreasHttpPostIn"/>
+      <wsdl:output message="tns:GetActiveRstrAreasHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SendActiveRstrArea">
+      <wsdl:input message="tns:SendActiveRstrAreaHttpPostIn"/>
+      <wsdl:output message="tns:SendActiveRstrAreaHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActiveRstrArea">
+      <wsdl:input message="tns:DeleteActiveRstrAreaHttpPostIn"/>
+      <wsdl:output message="tns:DeleteActiveRstrAreaHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AgreedRoutesSoap" type="tns:AgreedRoutesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetAgreedSegments">
+      <soap:operation soapAction="http://SOME/WSERVICE/GetAgreedSegments" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:GetAgreedSegmentsAuthData" part="AuthData" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendAgreedSegment">
+      <soap:operation soapAction="http://SOME/WSERVICE/SendAgreedSegment" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SendAgreedSegmentAuthData" part="AuthData" use="literal"/>
+        <soap:header message="tns:SendAgreedSegmentUserClaims" part="UserClaims" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAgreedSegment">
+      <soap:operation soapAction="http://SOME/WSERVICE/DeleteAgreedSegment" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:DeleteAgreedSegmentAuthData" part="AuthData" use="literal"/>
+        <soap:header message="tns:DeleteAgreedSegmentUserClaims" part="UserClaims" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveRstrAreas">
+      <soap:operation soapAction="http://SOME/WSERVICE/GetActiveRstrAreas" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:GetActiveRstrAreasAuthData" part="AuthData" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendActiveRstrArea">
+      <soap:operation soapAction="http://SOME/WSERVICE/SendActiveRstrArea" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:SendActiveRstrAreaAuthData" part="AuthData" use="literal"/>
+        <soap:header message="tns:SendActiveRstrAreaUserClaims" part="UserClaims" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActiveRstrArea">
+      <soap:operation soapAction="http://SOME/WSERVICE/DeleteActiveRstrArea" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+        <soap:header message="tns:DeleteActiveRstrAreaAuthData" part="AuthData" use="literal"/>
+        <soap:header message="tns:DeleteActiveRstrAreaUserClaims" part="UserClaims" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AgreedRoutesSoap12" type="tns:AgreedRoutesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetAgreedSegments">
+      <soap12:operation soapAction="http://SOME/WSERVICE/GetAgreedSegments" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:GetAgreedSegmentsAuthData" part="AuthData" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendAgreedSegment">
+      <soap12:operation soapAction="http://SOME/WSERVICE/SendAgreedSegment" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:SendAgreedSegmentAuthData" part="AuthData" use="literal"/>
+        <soap12:header message="tns:SendAgreedSegmentUserClaims" part="UserClaims" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAgreedSegment">
+      <soap12:operation soapAction="http://SOME/WSERVICE/DeleteAgreedSegment" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:DeleteAgreedSegmentAuthData" part="AuthData" use="literal"/>
+        <soap12:header message="tns:DeleteAgreedSegmentUserClaims" part="UserClaims" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveRstrAreas">
+      <soap12:operation soapAction="http://SOME/WSERVICE/GetActiveRstrAreas" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:GetActiveRstrAreasAuthData" part="AuthData" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendActiveRstrArea">
+      <soap12:operation soapAction="http://SOME/WSERVICE/SendActiveRstrArea" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:SendActiveRstrAreaAuthData" part="AuthData" use="literal"/>
+        <soap12:header message="tns:SendActiveRstrAreaUserClaims" part="UserClaims" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActiveRstrArea">
+      <soap12:operation soapAction="http://SOME/WSERVICE/DeleteActiveRstrArea" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:DeleteActiveRstrAreaAuthData" part="AuthData" use="literal"/>
+        <soap12:header message="tns:DeleteActiveRstrAreaUserClaims" part="UserClaims" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AgreedRoutesHttpGet" type="tns:AgreedRoutesHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="GetAgreedSegments">
+      <http:operation location="/GetAgreedSegments"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendAgreedSegment">
+      <http:operation location="/SendAgreedSegment"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAgreedSegment">
+      <http:operation location="/DeleteAgreedSegment"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveRstrAreas">
+      <http:operation location="/GetActiveRstrAreas"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendActiveRstrArea">
+      <http:operation location="/SendActiveRstrArea"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActiveRstrArea">
+      <http:operation location="/DeleteActiveRstrArea"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AgreedRoutesHttpPost" type="tns:AgreedRoutesHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="GetAgreedSegments">
+      <http:operation location="/GetAgreedSegments"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendAgreedSegment">
+      <http:operation location="/SendAgreedSegment"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAgreedSegment">
+      <http:operation location="/DeleteAgreedSegment"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveRstrAreas">
+      <http:operation location="/GetActiveRstrAreas"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendActiveRstrArea">
+      <http:operation location="/SendActiveRstrArea"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActiveRstrArea">
+      <http:operation location="/DeleteActiveRstrArea"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AgreedRoutes">
+    <wsdl:port name="AgreedRoutesSoap" binding="tns:AgreedRoutesSoap">
+      <soap:address location="https://someurl/WSERVICE/1.0/AgreedRoutes.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="AgreedRoutesSoap12" binding="tns:AgreedRoutesSoap12">
+      <soap12:address location="https://someurl/WSERVICE/1.0/AgreedRoutes.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="AgreedRoutesHttpGet" binding="tns:AgreedRoutesHttpGet">
+      <http:address location="https://someurl/WSERVICE/1.0/AgreedRoutes.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="AgreedRoutesHttpPost" binding="tns:AgreedRoutesHttpPost">
+      <http:address location="https://someurl/WSERVICE/1.0/AgreedRoutes.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://SCHIV-NB:8088/mockAgreedRoutesSoap</con:endpoint><con:endpoint>http://schiv-pc:8088/mockAgreedRoutesSoap</con:endpoint><con:endpoint>https://someurl/WSERVICE/1.0/AgreedRoutes.asmx</con:endpoint></con:endpoints><con:operation id="f5b1eb50-a0ac-4bab-95d8-969b82f03349" isOneWay="false" action="http://SOME/WSERVICE/DeleteActiveRstrArea" name="DeleteActiveRstrArea" bindingOperationName="DeleteActiveRstrArea" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="012dcec6-b57f-4f60-a6bc-a5819c93cdfe" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://someurl/WSERVICE/1.0/AgreedRoutes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cbd2="http://SOME/WSERVICE">
+   <soapenv:Header>
+      <cbd2:UserClaims>
+         <cbd2:zc_id>?</cbd2:zc_id>
+      </cbd2:UserClaims>
+      <cbd2:AuthData>
+         <!--Optional:-->
+         <cbd2:login>?</cbd2:login>
+         <!--Optional:-->
+         <cbd2:password>?</cbd2:password>
+      </cbd2:AuthData>
+   </soapenv:Header>
+   <soapenv:Body>
+      <cbd2:DeleteActiveRstrArea>
+         <cbd2:id>?</cbd2:id>
+      </cbd2:DeleteActiveRstrArea>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://SOME/WSERVICE/DeleteActiveRstrArea"/></con:call></con:operation><con:operation id="2575ff3d-83e0-4556-bbff-8696983407ca" isOneWay="false" action="http://SOME/WSERVICE/DeleteAgreedSegment" name="DeleteAgreedSegment" bindingOperationName="DeleteAgreedSegment" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="509cf11a-e81b-4cf1-bd8e-3faecb53d020" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://someurl/WSERVICE/1.0/AgreedRoutes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cbd2="http://SOME/WSERVICE">
+   <soapenv:Header>
+      <cbd2:UserClaims>
+         <cbd2:zc_id>?</cbd2:zc_id>
+      </cbd2:UserClaims>
+      <cbd2:AuthData>
+         <!--Optional:-->
+         <cbd2:login>?</cbd2:login>
+         <!--Optional:-->
+         <cbd2:password>?</cbd2:password>
+      </cbd2:AuthData>
+   </soapenv:Header>
+   <soapenv:Body>
+      <cbd2:DeleteAgreedSegment>
+         <cbd2:id>?</cbd2:id>
+      </cbd2:DeleteAgreedSegment>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://SOME/WSERVICE/DeleteAgreedSegment"/></con:call></con:operation><con:operation id="64b7912b-770d-4436-ad86-cc87dd0290f5" isOneWay="false" action="http://SOME/WSERVICE/GetActiveRstrAreas" name="GetActiveRstrAreas" bindingOperationName="GetActiveRstrAreas" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b14fa667-ce30-46da-ad64-40eed9245c17" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://someurl/WSERVICE/1.0/AgreedRoutes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cbd2="http://SOME/WSERVICE">
+   <soapenv:Header>
+      <cbd2:AuthData>
+         <!--Optional:-->
+         <cbd2:login>?</cbd2:login>
+         <!--Optional:-->
+         <cbd2:password>?</cbd2:password>
+      </cbd2:AuthData>
+   </soapenv:Header>
+   <soapenv:Body>
+      <cbd2:GetActiveRstrAreas>
+         <!--Optional:-->
+         <cbd2:token>?</cbd2:token>
+      </cbd2:GetActiveRstrAreas>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://SOME/WSERVICE/GetActiveRstrAreas"/></con:call></con:operation><con:operation id="2bcc7e96-a1d0-4aa1-94f9-8747fe78f782" isOneWay="false" action="http://SOME/WSERVICE/GetAgreedSegments" name="GetAgreedSegments" bindingOperationName="GetAgreedSegments" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f4a0846d-2738-4216-9672-d0a8dbce296f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://someurl/WSERVICE/1.0/AgreedRoutes.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cbd2="http://SOME/WSERVICE">
+   <soapenv:Header>
+      <cbd2:AuthData>
+         <!--Optional:-->
+         <cbd2:login>?</cbd2:login>
+         <!--Optional:-->
+         <cbd2:password>?</cbd2:password>
+      </cbd2:AuthData>
+   </soapenv:Header>
+   <soapenv:Body>
+      <cbd2:GetAgreedSegments>
+         <!--Optional:-->
+         <cbd2:token>?</cbd2:token>
+         <!--Optional:-->
+         <cbd2:options>?</cbd2:options>
+      </cbd2:GetAgreedSegments>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://SOME/WSERVICE/GetAgreedSegments"/></con:call></con:operation><con:operation id="36aa2f4c-c03a-4302-99cd-f31ecc207759" isOneWay="false" action="http://SOME/WSERVICE/SendActiveRstrArea" name="SendActiveRstrArea" bindingOperationName="SendActiveRstrArea" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2edca3c9-e133-4fec-a975-9d987ecae14d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/mockAgreedRoutesSoap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cbd2="http://SOME/WSERVICE">
+   <soapenv:Header>
+      <cbd2:UserClaims>
+         <cbd2:zc_id>?</cbd2:zc_id>
+      </cbd2:UserClaims>
+      <cbd2:AuthData>
+         <!--Optional:-->
+         <cbd2:login>?</cbd2:login>
+         <!--Optional:-->
+         <cbd2:password>?</cbd2:password>
+      </cbd2:AuthData>
+   </soapenv:Header>
+   <soapenv:Body>
+      <cbd2:SendActiveRstrArea>
+         <cbd2:id>?</cbd2:id>
+         <!--Optional:-->
+         <cbd2:areaCode>?</cbd2:areaCode>
+         <!--Optional:-->
+         <cbd2:lowLevel>?</cbd2:lowLevel>
+         <!--Optional:-->
+         <cbd2:highLevel>?</cbd2:highLevel>
+         <!--Optional:-->
+         <cbd2:dateFrom>?</cbd2:dateFrom>
+         <!--Optional:-->
+         <cbd2:dateTo>?</cbd2:dateTo>
+         <!--Optional:-->
+         <cbd2:exceptionMsg>?</cbd2:exceptionMsg>
+         <cbd2:rstrAreaId>?</cbd2:rstrAreaId>
+         <cbd2:brdParmsId>?</cbd2:brdParmsId>
+      </cbd2:SendActiveRstrArea>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://SOME/WSERVICE/SendActiveRstrArea"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="5d0cb98a-b1e7-44db-826c-0a4f931aff6a" isOneWay="false" action="http://SOME/WSERVICE/SendAgreedSegment" name="SendAgreedSegment" bindingOperationName="SendAgreedSegment" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="78ee5529-519a-4180-95b8-cf9800157045" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://schiv-pc:8088/mockAgreedRoutesSoap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cbd2="http://SOME/WSERVICE">
+   <soapenv:Header>
+      <cbd2:UserClaims>
+         <cbd2:zc_id>?</cbd2:zc_id>
+      </cbd2:UserClaims>
+      <cbd2:AuthData>
+         <!--Optional:-->
+         <cbd2:login>?</cbd2:login>
+         <!--Optional:-->
+         <cbd2:password>?</cbd2:password>
+      </cbd2:AuthData>
+   </soapenv:Header>
+   <soapenv:Body>
+      <cbd2:SendAgreedSegment>
+         <cbd2:id>?</cbd2:id>
+         <!--Optional:-->
+         <cbd2:airwayCode>?</cbd2:airwayCode>
+         <!--Optional:-->
+         <cbd2:atsBeginPoint>?</cbd2:atsBeginPoint>
+         <!--Optional:-->
+         <cbd2:atsEndPoint>?</cbd2:atsEndPoint>
+         <cbd2:isOneWay>?</cbd2:isOneWay>
+         <!--Optional:-->
+         <cbd2:levelFrom>?</cbd2:levelFrom>
+         <!--Optional:-->
+         <cbd2:levelTo>?</cbd2:levelTo>
+         <!--Optional:-->
+         <cbd2:dateFrom>?</cbd2:dateFrom>
+         <!--Optional:-->
+         <cbd2:dateTo>?</cbd2:dateTo>
+         <!--Optional:-->
+         <cbd2:exceptionMsg>?</cbd2:exceptionMsg>
+      </cbd2:SendAgreedSegment>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://SOME/WSERVICE/SendAgreedSegment"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService id="102d2da4-afcf-445b-88fb-6fffbce38937" port="8088" path="/mockAgreedRoutesSoap" host="SCHIV-NB" name="AgreedRoutesSoap MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="SendActiveRstrArea" id="02e61141-eda0-4d21-a667-dbff482be31c" interface="AgreedRoutesSoap" operation="SendActiveRstrArea"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="adeade25-8832-43ba-a43a-69f86cdeb81c" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<soap:Body>
+		<SendAgreedSegmentResponse xmlns="http://SOME/WSERVICE">
+			<SendAgreedSegmentResult>
+				<result xmlns="" id="2073865200"/>
+			</SendAgreedSegmentResult>
+		</SendAgreedSegmentResponse>
+	</soap:Body>
+</soap:Envelope>
+
+<!--
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<soap:Body>
+		<SendAgreedSegmentResponse xmlns="http://SOME/WSERVICE">
+			<SendAgreedSegmentResult>
+				<result xmlns="" errorCode="-8"/>
+			</SendAgreedSegmentResult>
+		</SendAgreedSegmentResponse>
+	</soap:Body>
+</soap:Envelope>
+-->]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://SOME/WSERVICE/SendActiveRstrArea"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
