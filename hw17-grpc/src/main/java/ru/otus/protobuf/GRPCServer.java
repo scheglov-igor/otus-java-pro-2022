@@ -19,6 +19,13 @@ public class GRPCServer {
                 .addService(remoteDBService).build();
 
         server.start();
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Recieved shutdown request");
+            server.shutdown();
+            System.out.println("Server stopped");
+        }));
+
         System.out.println("server waiting for client connections...");
         server.awaitTermination();
     }

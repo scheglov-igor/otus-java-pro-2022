@@ -4,11 +4,11 @@ package ru.otus.protobuf.generated;
 
 option java_multiple_files = true;
 
-message NumberMessage {
+message NumberResponse {
     int32 num = 1;
 }
 
-message IntervalMessage {
+message IntervalNumberRequest {
     int32 firstValue = 1;
     int32 lastValue = 2;
 }
@@ -16,5 +16,5 @@ message IntervalMessage {
 message Empty {}
 
 service RemoteDBService {
-    rpc getNumbers(IntervalMessage) returns (stream NumberMessage);
+    rpc getNumbers(IntervalNumberRequest) returns (stream NumberResponse);
 }
