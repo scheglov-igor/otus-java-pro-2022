@@ -26,6 +26,8 @@ public class MessageController {
     private final WebClient datastoreClient;
     private final SimpMessagingTemplate template;
 
+    private final long room1408 = 1408L;
+
     public MessageController(WebClient datastoreClient, SimpMessagingTemplate template) {
         this.datastoreClient = datastoreClient;
         this.template = template;
@@ -34,11 +36,18 @@ public class MessageController {
     @MessageMapping("/message.{roomId}")
     public void getMessage(@DestinationVariable String roomId, Message message) {
         logger.info("get message:{}, roomId:{}", message, roomId);
-        saveMessage(roomId, message)
-                .subscribe(msgId -> logger.info("message send id:{}", msgId));
+        if(roomId.equals(String.valueOf(room1408))) {
+            logger.warn("NOT SEND from room {}", room1408);
+        }
+        else {
+            saveMessage(roomId, message)
+                    .subscribe(msgId -> logger.info("message send id:{}", msgId));
 
-        template.convertAndSend(String.format("%s%s", TOPIC_TEMPLATE, roomId),
-                new Message(HtmlUtils.htmlEscape(message.messageStr())));
+            Message messagePayload = new Message(HtmlUtils.htmlEscape(message.messageStr()));
+
+            template.convertAndSend(String.format("%s%s", TOPIC_TEMPLATE, roomId), messagePayload);
+            template.convertAndSend(String.format("%s%s", TOPIC_TEMPLATE, room1408), messagePayload);
+        }
     }
 
 
@@ -51,6 +60,12 @@ public class MessageController {
             throw new ChatException("Can not get simpDestination header");
         }
         var roomId = parseRoomId(simpDestination);
+
+        if(roomId == room1408) {
+            getMessages()
+                    .doOnError(ex -> logger.error("getting messages for roomId:{} failed", roomId, ex))
+                    .subscribe(message -> template.convertAndSend(simpDestination, message));
+        }
 
         getMessagesByRoomId(roomId)
                 .doOnError(ex -> logger.error("getting messages for roomId:{} failed", roomId, ex))
@@ -74,7 +89,15 @@ public class MessageController {
     }
 
     private Flux<Message> getMessagesByRoomId(long roomId) {
-        return datastoreClient.get().uri(String.format("/msg/%s", roomId))
+        return getMessagesByURI(String.format("/msg/%s", roomId));
+    }
+
+    private Flux<Message> getMessages() {
+        return getMessagesByURI("/msg");
+    }
+
+    private Flux<Message> getMessagesByURI(String dsUri) {
+        return datastoreClient.get().uri(dsUri)
                 .accept(MediaType.APPLICATION_NDJSON)
                 .exchangeToFlux(response -> {
                     if (response.statusCode().equals(HttpStatus.OK)) {
