@@ -14,8 +14,7 @@ public class GRPCClient {
     private static final int SERVER_PORT = 8190;
 
     private final Object monitor = new Object();
-    private Integer lastNumber = 0;
-    private Integer currentNumber = 0;
+    private int currentNumber = 0;
 
     public static void main(String[] args) throws InterruptedException {
         new GRPCClient().start();
@@ -33,7 +32,7 @@ public class GRPCClient {
             public void onNext(NumberResponse um) {
                 synchronized (monitor) {
                     System.out.printf("new value: %d\n", um.getNum());
-                    lastNumber = um.getNum();
+                    currentNumber = currentNumber + um.getNum();
                 }
             }
 
@@ -58,8 +57,7 @@ public class GRPCClient {
     private void scheduledThreadPoolExecutor(int firstValue, int lastValue) {
         for (int i = firstValue; i <= lastValue; i++) {
             synchronized (monitor) {
-                currentNumber = currentNumber + lastNumber + 1;
-                lastNumber = 0;
+                currentNumber = currentNumber + 1;
                 System.out.printf("current value = %d\n", currentNumber);
             }
             try {
