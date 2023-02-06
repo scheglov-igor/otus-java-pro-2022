@@ -26,7 +26,7 @@ public class MessageController {
     private final WebClient datastoreClient;
     private final SimpMessagingTemplate template;
 
-    private final long room1408 = 1408L;
+    private static final long room1408 = 1408L;
 
     public MessageController(WebClient datastoreClient, SimpMessagingTemplate template) {
         this.datastoreClient = datastoreClient;
@@ -66,10 +66,11 @@ public class MessageController {
                     .doOnError(ex -> logger.error("getting messages for roomId:{} failed", roomId, ex))
                     .subscribe(message -> template.convertAndSend(simpDestination, message));
         }
-
-        getMessagesByRoomId(roomId)
-                .doOnError(ex -> logger.error("getting messages for roomId:{} failed", roomId, ex))
-                .subscribe(message -> template.convertAndSend(simpDestination, message));
+        else {
+            getMessagesByRoomId(roomId)
+                    .doOnError(ex -> logger.error("getting messages for roomId:{} failed", roomId, ex))
+                    .subscribe(message -> template.convertAndSend(simpDestination, message));
+        }
     }
 
     private long parseRoomId(String simpDestination) {
