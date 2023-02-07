@@ -21,6 +21,8 @@ public class SensorDataProcessorBuffered implements SensorDataProcessor {
     private final SensorDataBufferedWriter writer;
     private final PriorityBlockingQueue<SensorData> dataBuffer;
 
+    private final Object monitor = new Object();
+
     public SensorDataProcessorBuffered(int bufferSize, SensorDataBufferedWriter writer) {
         this.bufferSize = bufferSize;
         this.writer = writer;
@@ -38,14 +40,17 @@ public class SensorDataProcessorBuffered implements SensorDataProcessor {
     }
 
     public void flush() {
-        if (dataBuffer.size() > 0) {
-            final List<SensorData> bufferedData = new ArrayList<>();
-            int size = dataBuffer.drainTo(bufferedData, bufferSize);
+        // добавил синхронный сброс в врайтер
+        synchronized (monitor) {
+            if (dataBuffer.size() > 0) {
+                final List<SensorData> bufferedData = new ArrayList<>();
+                int size = dataBuffer.drainTo(bufferedData, bufferSize);
 
-            try {
-                writer.writeBufferedData(bufferedData);
-            } catch (Exception e) {
-                log.error("Ошибка в процессе записи буфера", e);
+                try {
+                    writer.writeBufferedData(bufferedData);
+                } catch (Exception e) {
+                    log.error("Ошибка в процессе записи буфера", e);
+                }
             }
         }
     }
