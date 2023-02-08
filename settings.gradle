@@ -16,3 +16,7 @@ include 'hw14-SpringBoot'
 include 'hw15-Monitor'
 include 'hw18-webflux:client-service'
 include 'hw18-webflux:datastore-service'
+include 'hw16-ConcurrentQueue'
+include 'hw17-grpc'
+include 'Project-db2ws'
+
